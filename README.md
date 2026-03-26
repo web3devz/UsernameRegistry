@@ -4,7 +4,6 @@ A decentralized naming system built on **OneChain** that lets users claim and ow
 
 All usernames are stored on-chain — transparent, unique, and censorship-resistant. Users maintain a consistent identity across any decentralized platform that reads the registry.
 
----
 
 ## Deployed Contracts (Testnet)
 
@@ -14,11 +13,10 @@ All usernames are stored on-chain — transparent, unique, and censorship-resist
 | Registry (shared object) | `0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37` |
 | Deploy Transaction | `CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9` |
 
-- [View Package on Explorer](https://onescan.cc/testnet/objectDetails?address=0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100)
+- [View Package on Explorer](https://onescan.cc/testnet/packageDetail?packageId=0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100)
 - [View Registry on Explorer](https://onescan.cc/testnet/objectDetails?address=0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37)
-- [View Deploy Transaction](https://onescan.cc/testnet/transactionDetail?digest=CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9)
+- [View Deploy Transaction](https://onescan.cc/testnet/transactionBlocksDetail?digest=CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9)
 
----
 
 ## How It Works
 
