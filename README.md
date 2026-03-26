@@ -1,42 +1,152 @@
-# UsernameRegistry
+# UsernameRegistry 🪪
 
-A decentralized naming system built on **OneChain** that lets users claim and own unique usernames on-chain. Unlike Web2 systems where usernames are platform-dependent and controlled by centralized entities, UsernameRegistry ensures ownership through wallet-based identity.
+**Decentralized Naming System on OneChain — Own Your Username, Own Your Identity**
 
-All usernames are stored on-chain — transparent, unique, and censorship-resistant. Users maintain a consistent identity across any decentralized platform that reads the registry.
+UsernameRegistry is a fully on-chain naming system that allows users to claim, own, and manage unique usernames tied to their wallet. It replaces fragmented Web2 usernames with a **portable, verifiable, and censorship-resistant identity layer** for Web3.
 
+## 🌐 Overview
 
-## Deployed Contracts (Testnet)
+In Web2, usernames are controlled by centralized platforms — they can be taken, restricted, or removed at any time. Users cannot carry their identity across applications.
 
-| Name | Address |
-|------|---------|
-| Package ID | `0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100` |
-| Registry (shared object) | `0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37` |
-| Deploy Transaction | `CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9` |
+UsernameRegistry solves this by creating a **shared on-chain registry** where usernames are:
 
-- [View Package on Explorer](https://onescan.cc/testnet/packageDetail?packageId=0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100)
-- [View Registry on Explorer](https://onescan.cc/testnet/objectDetails?address=0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37)
-- [View Deploy Transaction](https://onescan.cc/testnet/transactionBlocksDetail?digest=CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9)
+* **Unique** → no duplicates across the network
+* **User-Owned** → stored as wallet-owned objects
+* **Portable** → usable across any dApp
+* **Censorship-Resistant** → no central authority control
 
+This establishes a universal identity layer that can integrate with any decentralized application.
 
-## How It Works
+## ❗ The Problem
 
-1. **Connect Wallet** — any OneChain-compatible wallet
-2. **Check Availability** — real-time on-chain availability check as you type
-3. **Claim** — one transaction mints a `Username` object into your wallet
-4. **Use Everywhere** — any dApp can verify ownership by querying the shared Registry
+* Usernames are platform-specific and non-transferable
+* Centralized systems control identity ownership
+* No global namespace in Web3
+* Risk of censorship or account loss
+* Difficult to verify identity across dApps
 
-### Key Design Decisions
+## 💡 The Solution
 
-- **Shared Registry** — the `Registry` object is shared so anyone can call `claim` without needing the deployer's object
-- **Table for uniqueness** — uses `one::table::Table<String, address>` for O(1) duplicate checks instead of a linear vector scan
-- **Owned Username object** — the minted `Username` has `key + store`, so it lives in your wallet and can be transferred or burned
-- **Release** — owners can release their username back to the registry, making it available for others
+UsernameRegistry maintains a **shared on-chain Registry object** that maps usernames to wallet addresses.
 
----
+When a user claims a username:
 
-## Contract API
+* It is minted as an owned on-chain object
+* Stored permanently and uniquely
+* Verifiable by any application
+* Transferable or releasable by the owner
 
-```move
+This creates a **decentralized username layer** for the entire ecosystem.
+
+## ✨ Key Features
+
+* **Unique Username Claiming**
+  Register globally unique handles on-chain
+
+* **Wallet-Based Ownership**
+  Usernames are owned assets stored in your wallet
+
+* **Real-Time Availability Check**
+  Instantly verify if a username is available
+
+* **Release Mechanism**
+  Users can release usernames back to the registry
+
+* **Efficient Lookup System**
+  O(1) uniqueness checks using on-chain table structures
+
+* **Composable Identity Primitive**
+  Can integrate with profiles, reputation, and dApps
+
+## ⚙️ How It Works
+
+1. User connects wallet
+2. Inputs desired username
+3. System checks availability on-chain
+4. User submits transaction to claim username
+5. Username object is minted to wallet
+6. dApps can query registry to verify ownership
+
+## 📦 Deployed Contract
+
+* **Network:** OneChain Testnet
+
+* **Package ID:**
+  `0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100`
+
+* **Registry Object:**
+  `0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37`
+
+* **Deploy Transaction:**
+  `CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9`
+
+* **Explorer Links:**
+  [https://onescan.cc/testnet/objectDetails?address=0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100](https://onescan.cc/testnet/objectDetails?address=0xf9b680b02524aeb3bccd843ef1f0a9eeb316b7dce178a5e58333464247805100)
+  [https://onescan.cc/testnet/objectDetails?address=0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37](https://onescan.cc/testnet/objectDetails?address=0x2a02e1e1eda1a175361fbcd68d2aa634afecfde3b08992e5f6756aaf06035d37)
+  [https://onescan.cc/testnet/transactionDetail?digest=CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9](https://onescan.cc/testnet/transactionDetail?digest=CUFd9zbib4562F7ZKkZ4sLAR6VXMBMESFwMwvsPPBMn9)
+
+## 🛠 Tech Stack
+
+**Smart Contract**
+
+* Move (OneChain)
+
+**Frontend**
+
+* React
+* TypeScript
+* Vite
+
+**Wallet Integration**
+
+* @mysten/dapp-kit
+
+**Data Structures**
+
+* `one::table::Table` for efficient username mapping
+
+**Network**
+
+* OneChain Testnet
+
+## 🔍 Use Cases
+
+* **Decentralized Identity Systems**
+  Replace traditional usernames across dApps
+
+* **Social Platforms**
+  Unified identity across multiple applications
+
+* **DAO Membership & Profiles**
+  Human-readable identities for governance
+
+* **Reputation Systems**
+  Link usernames with trust scores (ReputationScore)
+
+* **Web3 Login Systems**
+  Use usernames instead of wallet addresses
+
+## 🚀 Why UsernameRegistry Stands Out
+
+* **True Ownership** — usernames live in your wallet
+* **Global Namespace** — one identity across all dApps
+* **Censorship Resistant** — no centralized control
+* **Efficient & Scalable** — O(1) lookup design
+* **Composable Infrastructure** — integrates with identity, reputation, and profiles
+* **Hackathon-Ready Utility** — foundational Web3 primitive
+
+## 🔮 Future Improvements
+
+* ENS-style human-readable domains
+* Username auctions for premium handles
+* Cross-chain username resolution
+* Integration with ChainProfile for unified identity
+* Reverse lookup (address → username)
+* ZK-based private username ownership
+
+## ⚙️ Contract API
+
+```move id="p9x2kl"
 // Claim a unique username (min 3 chars, lowercase alphanumeric + underscore)
 public fun claim(registry: &mut Registry, raw_handle: vector<u8>, ctx: &mut TxContext)
 
@@ -50,66 +160,35 @@ public fun is_available(registry: &Registry, handle: String): bool
 public fun total(registry: &Registry): u64
 ```
 
----
-
-## Local Development
+## 💻 Local Development
 
 ### Prerequisites
 
-- [OneChain CLI](https://docs.onelabs.cc) (`one` binary)
-- Node.js 18+
+* OneChain CLI (`one`)
+* Node.js 18+
 
 ### Build & Deploy Contract
 
-```bash
-# Build
+```bash id="v2k9lm"
 one move build --path contracts
-
-# Deploy
 one client publish --gas-budget 50000000 contracts
 ```
 
-After deploying, copy the `PackageID` and `Registry` object ID into `frontend/.env`:
+After deploying, set environment variables:
 
-```env
+```env id="n4p8xz"
 VITE_PACKAGE_ID=<your_package_id>
 VITE_REGISTRY_ID=<your_registry_object_id>
 ```
 
 ### Run Frontend
 
-```bash
+```bash id="q7m2za"
 cd frontend
 npm install
 npm run dev
 ```
 
----
+## 📄 License
 
-## Project Structure
-
-```
-UsernameRegistry/
-├── contracts/
-│   ├── Move.toml
-│   └── sources/
-│       └── registry.move      # Core contract
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ClaimUsername.tsx   # Claim flow with live availability check
-│   │   │   ├── MyUsername.tsx      # View & release owned username
-│   │   │   └── LookupUsername.tsx  # Lookup by wallet address
-│   │   ├── config/network.ts       # Contract addresses & explorer helpers
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   └── .env.example
-└── scripts/
-    └── deploy.sh
-```
-
----
-
-## License
-
-MIT
+MIT License
