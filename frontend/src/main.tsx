@@ -9,7 +9,10 @@ import './index.css'
 const queryClient = new QueryClient()
 
 const networks = {
-  testnet: { url: 'https://rpc-testnet.onelabs.cc:443' },
+  testnet: {
+    url: 'https://rpc-testnet.onelabs.cc:443',
+    network: 'testnet',
+  },
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
